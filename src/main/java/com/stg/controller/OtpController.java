@@ -1,6 +1,7 @@
 package com.stg.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +24,11 @@ public class OtpController {
 	    @PostMapping("/generate")
 	    public String generateOtp(@RequestParam String userId) {
 	        int otpLength = 6; // Adjust the OTP length as needed
-	        return otpService.generateOtp(otpLength,userId);
+	        	otpService.generateOtp(otpLength,userId) ;
+	        	return "Your OTP is Send to your Registered Mail Sucessfully";
+	         
+
+	         
 	    }
 
 	    // Verify an OTP for a specific user
@@ -35,5 +40,11 @@ public class OtpController {
 	            return "OTP is invalid or has expired.";
 	        }
 	    }
+	    
+	    @DeleteMapping("/delete")
+	    public void deleteOtpByUserId() {
+	    otpService.deleteOtpByUserId("ksubashchandrabose904@gmail.com");
+	    }
+	  
 	
 }

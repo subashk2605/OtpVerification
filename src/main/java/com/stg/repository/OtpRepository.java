@@ -10,4 +10,6 @@ public interface OtpRepository extends JpaRepository<Otp, Long> {
 
     // Custom method to find an OTP by user ID
     Otp findByUserId(String userId);
+    
+     void deleteByUserId(String userId);
 }
